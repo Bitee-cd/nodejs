@@ -12,11 +12,10 @@ http
         res.end();
       });
     } else if (req.method === "POST") {
-      let body = "";
-      res.on("data", (data) => {
+      req.on("data", (data) => {
         body += data;
       });
-      res.on("end", () => {
+      req.on("end", () => {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(body, () => {
           res.end();
